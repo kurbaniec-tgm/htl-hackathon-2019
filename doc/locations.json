@@ -1,0 +1,151 @@
+{
+"kinos": [
+{
+"name": "Admiral Kino",
+"address" : "Burggasse 119, 1070 Wien",
+"bbox": [16.338804,48.204199,16.338804,48.204199]
+},
+{
+"name": "De France",
+"address" : "Schottenring 5, 1010 Wien",
+"bbox":[16.363236,48.214632,16.363236,48.214632]
+},
+{
+"name": "Votivkino",
+"address" : "Währinger Straße 12, 1090 Wien",
+"bbox":[16.359894,48.216767,16.359894,48.216767]
+},
+{
+"name": "Apollo",
+"address" : "Gumpendorfer Straße 63, 1060 Wien",
+"bbox":[16.3517,48.196053,16.353559,48.197337]
+},
+{
+"name": "Cineplexx Donau Plex",
+"address" : "Wagramer Straße 79, 1220 Wien",
+"bbox":[16.433504,48.241496,16.433504,48.241496]
+},
+{
+"name": "Cineplexx Wien Auhof",
+"address" : "Albert-Schweitzer-Gasse 6, 1140 Wien",
+"bbox":[16.217181,48.207777,16.217573,48.207999]
+},
+{
+	"name": "Cineplexx Wienerberg",
+"address" : "Wienerbergstraße 11, 1100 Wien",
+"bbox":[16.345853,48.168282,16.345853,48.168282]
+},
+{
+	"name": "Hollywood Megaplex SCN",
+"address" : "Ignaz-Köck-Straße 1, 1210 Wien",
+"bbox":[16.399538,48.26713,16.399538,48.26713]
+},
+{
+	"name": "Hollywood Megaplex im Gasometer",
+"address" : "Guglgasse 43, 1110 Wien",
+"bbox":[16.416063,48.185001,16.416063,48.185001]
+},
+{
+	"name": "UCI Kinowelt Millennium City",
+"address" : "Handelskai 94-96, 1200 Wien",
+"bbox":[16.386926,48.240599,16.386926,48.240599]
+},
+{
+	"name":"Village Cinemas Wien 3 Center",
+"address" : "Landstraßer Hauptstraße 2a, 1030 Wien",
+"bbox":[16.385725,48.206241,16.385725,48.206241]
+},
+{
+	"name":"Filmmuseum",
+"address" : "Augustinerstraße 1, 1010 Wien",
+"bbox":[16.368392,48.204739,16.368392,48.204739]
+},
+{
+	"name":"Artis International",
+"address" : "Schultergasse 5, 1010 Wien",
+"bbox":[16.371144,48.211222,16.371144,48.211222]
+},
+{
+	"name":"Burg Kino",
+"address" : "Opernring 19, 1010 Wien",
+"bbox":[16.36519,48.203062,16.36519,48.203062]
+},
+{
+	"name":"English Cinema Haydn",
+"address" : "Mariahilfer Straße 57, 1060 Wien",
+"bbox":[16.352322,48.199039,16.35241,48.199048]
+},
+{
+	"name":"Lugner Kino City",
+"address" : "Gablenzgasse 1-3, 1150 Wien",
+"bbox":[16.336318,48.203739,16.336318,48.203739]
+},
+{
+	"name":"Actors Studio",
+"address" : "Tuchlauben 13, 1010 Wien",
+"bbox":[16.3706,48.210399,16.3706,48.210399]
+},
+{
+	"name":"Cine Center",
+"address" : "Fleischmarkt 6, 1010 Wien",
+"bbox":[16.374532,48.21118,16.374532,48.21118]
+},
+{
+	"name":"Planetarium Wien",
+"address" : "Oswald-Thomas-Platz/Riesenrad, 1020 Wien",
+"bbox":[16.394485,48.21619,16.394485,48.21619]
+},
+{
+	"name":"Bellaria Kino",
+"address" : "Museumstraße 3, 1070 Wien",
+"bbox":[16.356563,48.204844,16.356563,48.204844]
+},
+{
+	"name":"Top Kino",
+"address" : "Rahlgasse 1, 1060 Wien",
+"bbox":[16.361611,48.201367,16.361611,48.201367]
+},
+{
+	"name":"Urania Kino Wien",
+"address" : "Uraniastraße 1, 1010 Wien",
+"bbox":[16.383907,48.211454,16.383907,48.211454]
+},
+{
+	"name":"Filmhaus Kino Spittelberg",
+"address" : "Spittelberggasse 3, 1070 Wien",
+"bbox":[16.355286,48.202985,16.355286,48.202985]
+},
+{
+	"name":"Metro Kinokulturhaus",
+"address" : "Johannesgasse 4, 1010 Wien",
+"bbox":[16.372041,48.204874,16.372238,48.20497]
+},
+{
+	"name":"BSL Breitenseer Lichtspiele",
+"address" : "Breitenseer Straße 21, 1140 Wien",
+"bbox":[16.309443,48.201079,16.309443,48.201079]
+},
+{
+	"name":"Stadtkino im Künstlerhaus",
+"address" : "Akademiestraße 13, 1010 Wien",
+"bbox":[16.371206,48.200971,16.371206,48.200971]
+},
+{
+	"name":"Filmcasino",
+"address" : "Margaretenstraße 78, 1050 Wien",
+"bbox":[16.35983,48.192326,16.35983,48.192326]
+},
+{
+	"name":"Gartenbaukino",
+"address" : "Parkring 12, 1010 Wien",
+"bbox":[16.377634,48.204854,16.377634,48.204854]
+},
+{
+	"name":"Schikaneder",
+"address" : "Margaretenstraße 22-24, 1040 Wien",
+"bbox": [16.365188,48.196684,16.365188,48.196684]
+}
+
+
+	]
+}

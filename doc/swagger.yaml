@@ -1,0 +1,806 @@
+openapi: 3.0.0
+info:
+  title: HTL Hackathon
+  description: These are the URLs that can be used for building the Alexa application.
+  version: 1.0.0
+tags:
+  - name: Movies
+    description: Movies that will be broadcasted in different cinemas
+  - name: Imdb Rating
+    description: Ratings for movies
+  - name: OpenRoutes
+    description: Traffic and routes to a destination
+  - name: OpenWeather
+    description: Weather for given city
+  - name: CinemaAddress
+    description: addresses and coordinates for every cinema
+  - name: BingMaps
+    description: Bing Maps for Navigation picture
+paths:
+  '/api/v1/cfs/filmat/screenings/nested/movie/{date}':
+    get:
+      servers:
+        - url: 'https://efs.film.at/'
+          description: Override base path for all operations with the /files
+      tags:
+        - Movies
+      summary: Find movies on a certain date
+      parameters:
+        - name: date
+          in: path
+          required: true
+          description: 'movies broadcasted on this date. format: 2019-01-30'
+          schema:
+            type: string
+        - name: genres
+          in: query
+          required: false
+          description: >-
+            Genre of the movies. Be careful the value needs to be written in
+            German.
+          schema:
+            type: string
+        - name: city
+          in: query
+          required: true
+          description: >-
+            The city you like to watch a movie. Be careful the value needs to be
+            written in German.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieResponse'
+  /:
+    get:
+      servers:
+        - url: 'https://www.omdbapi.com/'
+          description: Override base path for all operations with the /files
+      tags:
+        - Imdb Rating
+      summary: Find the rating for a certain movie
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          description: dc083806
+          schema:
+            type: string
+        - name: t
+          in: query
+          required: true
+          description: Search movie by title
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieratingResponse'
+  /geocode/search:
+    get:
+      servers:
+        - url: 'https://api.openrouteservice.org'
+          description: Override base path for all operations with the /files
+      tags:
+        - OpenRoutes
+      summary: >-
+        Returns a JSON formatted list of objects corresponding to the search
+        input
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          description: API Key
+          schema:
+            type: string
+        - name: text
+          in: query
+          required: true
+          description: Destination you are looking for
+          schema:
+            type: string
+        - name: boundary.country
+          in: query
+          required: true
+          description: Country Code - AT
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeocodeSearch'
+  /directions:
+    get:
+      servers:
+        - url: 'https://api.openrouteservice.org'
+          description: Override base path for all operations with the /files
+      tags:
+        - OpenRoutes
+      summary: Returns a route between two or more locations.
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          description: API Key
+          schema:
+            type: string
+        - name: coordinates
+          in: query
+          required: true
+          description: Coordinates of startpoint and destination - seperated by " | "
+          schema:
+            type: string
+        - name: profile
+          in: query
+          required: true
+          description: 'Choose profile: e.g. driving-car'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Distance'
+  /data/2.5/weather:
+    get:
+      servers:
+        - url: 'http://api.openweathermap.org/'
+          description: Override base path for all operations with the /files
+      tags:
+        - OpenWeather
+      summary: Returns the current weather information as a JSON
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: city name in english
+          schema:
+            type: string
+        - name: APPID
+          in: query
+          required: true
+          description: API Key
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeatherInfos'
+  /b/5c41ac9b81fe89272a8f1b65/:
+    get:
+      servers:
+        - url: 'https://api.jsonbin.io/'
+          description: Override base path for all operations with the /files
+      tags:
+        - CinemaAddress
+      summary: Returns a JSON with cinemas and its addresses and coordinates
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CinemaAddresses'
+                
+  /REST/v1/Imagery/Map/Road/Routes:
+    get:
+      servers:
+        - url: 'https://dev.virtualearth.net/'
+          description: Get a map with Road imagery that displays a route
+      tags:
+        - BingMaps
+      summary: Get a map with Road imagery that displays a route
+      parameters:
+        - name: key
+          in: query
+          required: true
+          description: API Key
+          schema:
+            type: string
+        - name: wp.0
+          in: query
+          required: true
+          description: city name in english
+          schema:
+            type: string
+        - name: wp.1
+          in: query
+          required: true
+          description: city name in english
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response is a picture in jpeg
+  
+  /REST/V1/Routes/Transit:
+    get:
+      servers:
+        - url: 'https://dev.virtualearth.net/'
+          description: Get a public transport route
+      tags:
+        - BingMaps
+      summary: Get a public transport route
+      parameters:
+        - name: key
+          in: query
+          required: true
+          description: API Key
+          schema:
+            type: string
+        - name: wp.0
+          in: query
+          required: true
+          description: city name in english
+          schema:
+            type: string
+        - name: wp.1
+          in: query
+          required: true
+          description: city name in english
+          schema:
+            type: string
+        - name: timeType
+          in: query
+          required: true
+          description: specifies how to interpret the dateTime (e.g. Arrival, Departure)
+          schema:
+            type: string
+        - name: dateTime
+          in: query
+          required: true
+          description: desired transit time such as arrival or departure Time in hh:mm:ss PM/AM format
+          schema:
+            type: string
+        - name: output
+          in: query
+          required: true
+          description: Output format e.g. json
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Distance'
+                
+  /REST/V1/Routes/Driving:
+    get:
+      servers:
+        - url: 'https://dev.virtualearth.net/'
+          description: Get a driving route
+      tags:
+        - BingMaps
+      summary: Get a driving route
+      parameters:
+        - name: key
+          in: query
+          required: true
+          description: API Key
+          schema:
+            type: string
+        - name: wp.0
+          in: query
+          required: true
+          description: start address (e.g. Schottenring 18,Vienna)
+          schema:
+            type: string
+        - name: wp.1
+          in: query
+          required: true
+          description: destination address (e.g. Burggasse 119, Vienna)
+          schema:
+            type: string
+        - name: timeType
+          in: query
+          required: false
+          description: specifies how to interpret the dateTime (e.g. Arrival, Departure)
+          schema:
+            type: string
+        - name: dateTime
+          in: query
+          required: false
+          description: given Time in hh:mm:ss PM/AM format
+          schema:
+            type: string
+        - name: o
+          in: query
+          required: true
+          description: Output format e.g. json
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Excpected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Distance'
+
+components:
+  schemas:
+    MovieResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              parent:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  id:
+                    type: integer
+                    format: int64
+                  title:
+                    type: string
+                  uri:
+                    type: string
+                  classification:
+                    type: string
+                  genres:
+                    type: array
+                    items:
+                      type: string
+              nestedResults:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    parent:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        id:
+                          type: string
+                        title:
+                          type: string
+                        uri:
+                          type: string
+                        country:
+                          type: string
+                    screenings:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          time:
+                            type: string
+                          3d:
+                            type: boolean
+                          ov:
+                            type: boolean
+                          info:
+                            type: string
+        filter:
+          type: object
+          properties:
+            days:
+              type: array
+              items:
+                type: string
+            tags:
+              type: array
+              items:
+                type: string
+            classifications:
+              type: array
+              items:
+                type: string
+            genres:
+              type: array
+              items:
+                type: string
+    
+    MovieratingResponse:
+      type: object
+      properties:
+        Title:
+          type: string
+        Year:
+          type: string
+        Rated:
+          type: string
+        Released:
+          type: string
+        Runtime:
+          type: string
+        Genre:
+          type: string
+        Director:
+          type: string
+        Writer:
+          type: string
+        Actors:
+          type: string
+        Plot:
+          type: string
+        Language:
+          type: string
+        Country:
+          type: string
+        Awards:
+          type: string
+        Poster:
+          type: string
+        Ratings:
+          type: array
+          items:
+            type: object
+            properties:
+              Source:
+                type: string
+              Value:
+                type: string
+        Metascore:
+          type: string
+        imdbRating:
+          type: string
+        imdbVotes:
+          type: string
+        imdbID:
+          type: string
+        Type:
+          type: string
+        DVD:
+          type: string
+        BoxOffice:
+          type: string
+        Production:
+          type: string
+        Website:
+          type: string
+        Response:
+          type: string
+    
+    Distance:
+      type: object
+      properties:
+        routes:
+          type: array
+          items:
+            type: object
+            properties:
+              summary:
+                type: object
+                properties:
+                  distance:
+                    type: number
+                    format: float
+                  duration:
+                    type: number
+                    format: float
+              geometry_format:
+                type: string
+              geometry:
+                type: string
+              segments:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    distance:
+                      type: number
+                      format: float
+                    duration:
+                      type: number
+                      format: float
+                    steps:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          distance:
+                            type: number
+                            format: float
+                          duration:
+                            type: number
+                            format: float
+                          type:
+                            type: integer
+                          instructions:
+                            type: string
+                          name:
+                            type: string
+                          waypoints:
+                            type: array
+                            items:
+                              type: integer
+              way_points:
+                type: array
+                items:
+                  type: integer
+              bbox:
+                type: array
+                items:
+                  type: number
+                  format: float
+        bbox:
+          type: array
+          items:
+            type: number
+            format: float
+        info:
+          type: object
+          properties:
+            attribution:
+              type: string
+            engine:
+              type: object
+              properties:
+                version:
+                  type: string
+                build_date:
+                  type: string
+            service:
+              type: string
+            timestamp:
+              type: integer
+              format: int64
+            query:
+              type: object
+              properties:
+                profile:
+                  type: string
+                preference:
+                  type: string
+                coordinates:
+                  type: array
+                  items:
+                    type: number
+                    format: float
+                language:
+                  type: string
+                unit:
+                  type: string
+                geometry:
+                  type: boolean
+                geometry_format: 
+                  type: string
+                instructions_format:
+                  type: string
+                instructions:
+                  type: boolean
+                elevation:
+                  type: boolean
+            
+    GeocodeSearch:
+      type: object
+      properties:
+        geocoding:
+          type: object
+          properties:
+            version:
+              type: string
+            attribution: 
+              type: string
+            query:
+              type: object
+              properties: 
+                text:
+                  type: string
+                size: 
+                  type: integer
+                private:
+                  type: boolean
+                boundary.pountry:
+                  type: string
+                lang:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    iso6391: 
+                      type: string
+                    iso6393:
+                      type: string
+                    default: 
+                      type: boolean
+                querySize: 
+                  type: integer
+                parser:
+                  type: string
+                parsed_text:
+                  type: object
+            engine:
+              type: object
+              properties:
+                name:
+                  type: string
+                author:
+                  type: string
+                version:
+                  type: string  
+            timestamp:
+              type: integer
+              format: int64
+                
+        type:
+          type: string
+        features: 
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              geometry:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  coordinates:
+                    type: array
+                    items:
+                      type: number
+                      format: float
+        properties:
+          type: object
+          properties:
+            id:
+              type: string
+            gid:
+              type: string
+            layer:
+              type: string
+            source:
+              type: string
+            source_id:
+              type: string
+            name:
+              type: string
+            confidence:
+              type: integer
+            match_type:
+              type: string
+            accuracy:
+              type: string
+            country:
+              type: string
+            country_gid:
+              type: string
+            localadmin:
+              type: string
+            localadmin_gid:
+              type: string
+            locality:
+              type: string
+            locality_gid:
+              type: string
+            neighbourhood:
+              type: string
+            neighbourhood_gid:
+              type: string
+            continent:
+              type: string
+            continent_gid:
+              type: string
+            label:
+              type: string
+        bbox:
+          type: array
+          items:
+            type: number
+            format: float
+            
+    CinemaAddresses:
+      type: object
+      properties:
+        kinos:
+          type: array
+          items:
+            type: object
+            properties:
+              bbox: 
+                type: array
+                items:
+                  type: number
+              address:
+                type: string
+              name: 
+                type: string
+                
+    WeatherInfos:
+      type: object
+      properties:
+        coord: 
+          type: object
+          properties: 
+            lon: 
+              type: integer
+              format: int32
+            lat: 
+              type: integer
+              format: int32
+        sys: 
+          type: object
+          properties: 
+            country: 
+              type: string
+            sunrise: 
+              type: integer
+              format: int32
+            sunset: 
+              type: integer
+              format: int32
+        weather: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              id: 
+                type: integer
+                format: int32
+              main: 
+                type: string
+              description: 
+                type: string
+              icon: 
+                type: string
+        main: 
+          type: object
+          properties: 
+            temp: 
+              type: number
+            humidity: 
+              type: integer
+              format: int32
+            pressure: 
+              type: integer
+              format: int32
+            temp_min: 
+              type: number
+            temp_max: 
+              type: number
+        wind: 
+          type: object
+          properties: 
+            speed: 
+              type: number
+            deg: 
+              type: number
+        rain: 
+          type: object
+          properties: 
+            3h: 
+              type: integer
+              format: int32
+        clouds: 
+          type: object
+          properties: 
+            all: 
+              type: integer
+              format: int32
+        dt: 
+          type: integer
+          format: int32
+        id: 
+          type: integer
+          format: int32
+        name: 
+          type: string
+        cod: 
+          type: integer
+          format: int32
+          

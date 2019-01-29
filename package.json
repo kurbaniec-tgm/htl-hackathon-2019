@@ -1,0 +1,15 @@
+{
+  "name": "htl-hackathon-preparation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://mathias.hoeld@innersource.accenture.com/scm/htlhack/htl-hackathon-preparation.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
