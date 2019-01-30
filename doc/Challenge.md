@@ -29,7 +29,7 @@ Mit den folgenden Feature solltet ihr beginnen:
 Features:
 - Der Nutzer möchte wissen wie er ins gewünschte Kino kommt (Route)
 - Der Nutzer möchte nur gute Filme vorgeschlagen bekommen. (Bewertungen)
-- Optional kann man dem Nutzer noch Wetterinformationen zukommen lassen (Wetter)
+- Optional kann man dem Nutzer noch Wetterinformationen zukommen lassen (Wetter) <br>
 Überlege dir wie man diese APIs sinnvoll in den Alexa Skill integrieren kann um dem Nutzer ein gutes Erlebnis zu ermöglichen.
 
 

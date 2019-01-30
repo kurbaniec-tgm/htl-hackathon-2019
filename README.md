@@ -8,6 +8,7 @@ Hi and welcome to the Readme of the Alexa Hackathon.
 - [Hello World Example](./doc/HelloWorld.md)
 - [Challenge Description](./doc/Challenge.md)
 - [API Documentation](./doc/API.md) you can find your API-Keys here
+- [AlexaDescription](./doc/AlexaDescription.md) to get a basic knowledge about how alexa works
 
 
 ## Time table
@@ -30,7 +31,7 @@ Hi and welcome to the Readme of the Alexa Hackathon.
 
 
 ## Evaluation criteria:
-- 40% complexity
-- 30% innovation
+- 30% complexity
+- 25% innovation
 - 20% usability
-- 10% pitch
+- 25% pitch

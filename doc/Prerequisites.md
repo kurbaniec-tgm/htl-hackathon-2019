@@ -21,15 +21,15 @@ You can find your credentials inside your team folder (`/<Your Team>/credentials
 
 **_ NodeJS is needed for every team in order to use the `Serverless Framework`! _**
 
-Before you start, make sure that you have `NodeJS` installed on your machine. To do you go to `https://nodejs.org/en/download/` and install the current LTS version.
+Before you start, make sure that you have `NodeJS` installed on your machine. Go to `https://nodejs.org/en/download/` and install the current LTS version.
 
 ### Serverless Framework
 
-After the installation of `NodeJS` start the NodeJS CommandPrompt (NOT the Windows-Terminal) install the Serverless Framework with `npm install -g serverless`. The serverless.yml is already configured in your project folder.
+- After the installation of `NodeJS` start the NodeJS CommandPrompt (NOT the Windows-Terminal) install the Serverless Framework with `npm install -g serverless`. The serverless.yml is already configured in your project folder.
 
-Afterwards set up your serverless config with your AWS `Key` and `Secret` which you retrieved in the step above with this command `serverless config credentials --provider aws --key KEY --secret SECRET`
+- You will find your Key and Secret Key in your project folder in the credentials.json file.
+Set up your serverless config with your AWS `Key` and `Secret` which you retrieved in the step above with this command `serverless config credentials --provider aws --key KEY --secret SECRET`. Your serverless config is now completed.
 
-Now you're able to deploy your functions with serverless `deploy function -f functionname` directly to your aws
 
 ### Postman
 
